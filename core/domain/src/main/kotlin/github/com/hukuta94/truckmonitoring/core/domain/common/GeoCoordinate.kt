@@ -7,8 +7,9 @@ data class GeoCoordinate private constructor(
     val longitude: BigDecimal,
 ) {
     companion object {
-        private val LATITUDE_RANGE = BigDecimal("-90") .. BigDecimal("90")
-        private val LONGITUDE_RANGE = BigDecimal("-180") .. BigDecimal("180")
+        private val ZERO = BigDecimal("0.00000")
+        private val LATITUDE_RANGE = BigDecimal("-90.0000") .. BigDecimal("90.0000")
+        private val LONGITUDE_RANGE = BigDecimal("-180.0000") .. BigDecimal("180.0000")
 
         fun from(
             latitude: BigDecimal,
@@ -22,5 +23,7 @@ data class GeoCoordinate private constructor(
             }
             return GeoCoordinate(latitude, longitude)
         }
+
+        fun zero() = GeoCoordinate(ZERO, ZERO)
     }
 }
