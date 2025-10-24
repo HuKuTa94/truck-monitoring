@@ -10,8 +10,6 @@ include("api:kafka")
 
 // Out/Secondary/Driven adapters
 include("infrastructure:orm")
-include("infrastructure:kafka")
-include("infrastructure:in-memory")
 include("infrastructure:persist:postgres")
 
 // Configuration of whole application

@@ -6,6 +6,9 @@ data class GeoCoordinate private constructor(
     val latitude: BigDecimal,
     val longitude: BigDecimal,
 ) {
+    fun latitudeToString() = latitude.toPlainString()
+    fun longitudeToString() = longitude.toPlainString()
+
     companion object {
         private val ZERO = BigDecimal("0.00000")
         private val LATITUDE_RANGE = BigDecimal("-90.0000") .. BigDecimal("90.0000")

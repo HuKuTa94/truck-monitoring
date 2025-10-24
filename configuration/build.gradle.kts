@@ -16,11 +16,14 @@ dependencies {
 
     // infrastructure adapters
     api(project(":infrastructure:orm"))
-    api(project(":infrastructure:kafka"))
-    api(project(":infrastructure:in-memory"))
+    api(project(":infrastructure:persist:postgres"))
 
     // frameworks
+    // ktorm
+    implementation(Libs.Ktorm.core)
+
     // spring
+    implementation(Libs.Spring.jdbc)
     implementation(platform(Libs.SpringBoot.bom))
     implementation(Libs.SpringBoot.starter_web)
     implementation(Libs.SpringBoot.starter_jdbc)

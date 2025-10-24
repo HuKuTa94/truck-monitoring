@@ -13,9 +13,15 @@ class Truck(
     val vin: VIN,
     private var status: TruckStatus,
     coordinate: GeoCoordinate,
-    private var coordinateChangedAt: LocalDateTime,
-    private var gpsSignalReceivedAt: LocalDateTime,
+    coordinateChangedAt: LocalDateTime,
+    gpsSignalReceivedAt: LocalDateTime,
 ) : Aggregate<UUID>() {
+
+    var coordinateChangedAt: LocalDateTime = coordinateChangedAt
+        private set
+
+     var gpsSignalReceivedAt: LocalDateTime = gpsSignalReceivedAt
+        private set
 
     var coordinate: GeoCoordinate = coordinate
         private set
