@@ -12,6 +12,7 @@ include("api:kafka")
 include("infrastructure:orm")
 include("infrastructure:kafka")
 include("infrastructure:in-memory")
+include("infrastructure:persist:postgres")
 
 // Configuration of whole application
 include("configuration")

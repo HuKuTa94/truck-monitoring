@@ -150,4 +150,8 @@ object Libs {
         private const val version = "2.13.4"
         const val module_kotlin = "com.fasterxml.jackson.module:jackson-module-kotlin:$version"
     }
+    object Ktorm {
+        private const val version = "4.1.1"
+        const val core = "org.ktorm:ktorm-core:$version"
+    }
 }

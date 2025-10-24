@@ -1,0 +1,107 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ========== create_truck_status_table ========== -->
+    <changeSet id="create_truck_status_table" author="Nikita Koshelev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="truck_statuses"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="truck_statuses">
+            <column name="id" type="int">
+                <constraints primaryKey="true"
+                             nullable="false"
+                             primaryKeyName="pk_truck_status"/>
+            </column>
+            <column name="code" type="varchar(16)">
+                <constraints unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ========== insert_statuses_into_truck_status_table ========== -->
+    <changeSet id="insert_statuses_into_truck_status_table" author="Nikita Koshelev">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT count(*) FROM truck_statuses WHERE id in (1, 2, 3)
+            </sqlCheck>
+        </preConditions>
+
+        <insert tableName="truck_statuses">
+            <column name="id" value="1"/>
+            <column name="code" value="MOVING"/>
+        </insert>
+
+        <insert tableName="truck_statuses">
+            <column name="id" value="2"/>
+            <column name="code" value="PARKED"/>
+        </insert>
+
+        <insert tableName="truck_statuses">
+            <column name="id" value="3"/>
+            <column name="code" value="NO_SIGNAL"/>
+        </insert>
+    </changeSet>
+
+    <!-- ========== create_truck_table ========== -->
+    <changeSet id="create_truck_table" author="Nikita Koshelev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="trucks"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="trucks">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"
+                             nullable="false"
+                             primaryKeyName="pk_trucks"/>
+            </column>
+
+            <column name="vin" type="varchar(20)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="status_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="latitude" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="longitude" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="coordinate_changed_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="gps_signal_received_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="idx_truck_id" tableName="trucks">
+            <column name="id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_truck_vin" tableName="trucks">
+            <column name="vin"/>
+        </createIndex>
+
+        <addForeignKeyConstraint
+                baseTableName="trucks"
+                baseColumnNames="status_id"
+                constraintName="fk_truck_status_id"
+                referencedTableName="truck_statuses"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
