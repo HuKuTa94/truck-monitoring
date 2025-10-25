@@ -21,6 +21,7 @@ dependencies {
     // frameworks
     // ktorm
     implementation(Libs.Ktorm.core)
+    implementation(Libs.Ktorm.support_postgresql)
 
     // spring
     implementation(Libs.Spring.jdbc)

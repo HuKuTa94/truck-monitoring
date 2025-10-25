@@ -16,4 +16,8 @@ dependencies {
     // kafka
     implementation(Libs.Spring.kafka)
     implementation(Libs.Kafka.clients)
+
+    // json
+    implementation(Libs.Jackson.module_kotlin)
+    implementation(Libs.Jackson.data_type_jsr310)
 }

@@ -16,7 +16,7 @@ import java.time.Clock
     CoreConfiguration::class,
     InfrastructureConfiguration::class,
 )
-open class DeliveryApplicationConfiguration {
+open class TruckMonitoringApplicationConfiguration {
     @Bean
     open fun applicationClock(): Clock = Clock.systemDefaultZone()
 }

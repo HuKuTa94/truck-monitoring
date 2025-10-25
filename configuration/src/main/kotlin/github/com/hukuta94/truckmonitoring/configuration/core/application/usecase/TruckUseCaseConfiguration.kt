@@ -3,6 +3,8 @@ package github.com.hukuta94.truckmonitoring.configuration.core.application.useca
 import github.com.hukuta94.truckmonitoring.core.application.usecase.truck.CreateTruckUseCase
 import github.com.hukuta94.truckmonitoring.core.application.usecase.truck.impl.CreateTruckUseCaseImpl
 import github.com.hukuta94.truckmonitoring.core.application.port.repository.domain.TruckRepositoryPort
+import github.com.hukuta94.truckmonitoring.core.application.usecase.truck.ChangeTruckCoordinateUseCase
+import github.com.hukuta94.truckmonitoring.core.application.usecase.truck.impl.ChangeTruckCoordinateUseCaseImpl
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import java.time.Clock
@@ -15,6 +17,15 @@ open class TruckUseCaseConfiguration {
         truckRepositoryPort: TruckRepositoryPort,
         clock: Clock,
     ): CreateTruckUseCase = CreateTruckUseCaseImpl(
+        truckRepositoryPort = truckRepositoryPort,
+        clock = clock,
+    )
+
+    @Bean
+    open fun changeTruckCoordinateUseCase(
+        truckRepositoryPort: TruckRepositoryPort,
+        clock: Clock,
+    ): ChangeTruckCoordinateUseCase = ChangeTruckCoordinateUseCaseImpl(
         truckRepositoryPort = truckRepositoryPort,
         clock = clock,
     )

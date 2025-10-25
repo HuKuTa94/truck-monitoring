@@ -150,9 +150,11 @@ object Libs {
     object Jackson {
         private const val version = "2.13.4"
         const val module_kotlin = "com.fasterxml.jackson.module:jackson-module-kotlin:$version"
+        const val data_type_jsr310 = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$version"
     }
     object Ktorm {
         private const val version = "4.1.1"
         const val core = "org.ktorm:ktorm-core:$version"
+        const val support_postgresql = "org.ktorm:ktorm-support-postgresql:$version"
     }
 }
