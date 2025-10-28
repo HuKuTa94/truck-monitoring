@@ -3,7 +3,7 @@ package github.com.hukuta94.truckmonitoring.infrastructure.gps
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import github.com.hukuta94.truckmonitoring.core.application.port.GpsTracker
+import github.com.hukuta94.truckmonitoring.core.application.port.GpsTrackerPort
 import github.com.hukuta94.truckmonitoring.core.domain.aggregate.truck.TruckStatus
 import github.com.hukuta94.truckmonitoring.core.domain.common.GeoCoordinate
 import github.com.hukuta94.truckmonitoring.core.domain.common.VIN
@@ -17,7 +17,7 @@ import java.time.ZoneOffset
 class GpsTrackerEmulator(
     private val coordinates: List<GpsEmulatorCoordinate>,
     private val kafkaTemplate: KafkaTemplate<String, String>,
-) : GpsTracker {
+) : GpsTrackerPort {
 
     private var offset = 0
     private val trackableVins = mutableSetOf<VIN>()

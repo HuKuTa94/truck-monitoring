@@ -1,11 +1,12 @@
 package github.com.hukuta94.truckmonitoring.core.domain.common
 
+import github.com.hukuta94.truckmonitoring.core.domain.ValueObject
 import java.math.BigDecimal
 
 data class GeoCoordinate private constructor(
     val latitude: BigDecimal,
     val longitude: BigDecimal,
-) {
+): ValueObject {
     fun latitudeToString() = latitude.toPlainString()
     fun longitudeToString() = longitude.toPlainString()
 

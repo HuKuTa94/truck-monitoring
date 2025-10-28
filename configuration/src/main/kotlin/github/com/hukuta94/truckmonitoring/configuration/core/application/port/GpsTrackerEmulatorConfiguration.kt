@@ -1,6 +1,6 @@
 package github.com.hukuta94.truckmonitoring.configuration.core.application.port
 
-import github.com.hukuta94.truckmonitoring.core.application.port.GpsTracker
+import github.com.hukuta94.truckmonitoring.core.application.port.GpsTrackerPort
 import github.com.hukuta94.truckmonitoring.core.domain.aggregate.truck.TruckStatus
 import github.com.hukuta94.truckmonitoring.core.domain.common.GeoCoordinate
 import github.com.hukuta94.truckmonitoring.infrastructure.gps.GpsEmulatorCoordinate
@@ -47,7 +47,7 @@ open class GpsTrackerEmulatorConfiguration {
     open fun gpsTrackerEmulator(
         gpsEmulatorCoordinates: List<GpsEmulatorCoordinate>,
         kafkaTemplate: KafkaTemplate<String, String>,
-    ): GpsTracker = GpsTrackerEmulator(
+    ): GpsTrackerPort = GpsTrackerEmulator(
         gpsEmulatorCoordinates,
         kafkaTemplate,
     )
