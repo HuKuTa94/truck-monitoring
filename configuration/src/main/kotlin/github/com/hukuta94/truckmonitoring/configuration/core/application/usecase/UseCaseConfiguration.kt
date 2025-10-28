@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import
 @Configuration
 @Import(
     TruckUseCaseConfiguration::class,
-    MockUseCaseConfiguration::class,
+    GpsUseCaseConfiguration::class,
 )
 open class UseCaseConfiguration {
 

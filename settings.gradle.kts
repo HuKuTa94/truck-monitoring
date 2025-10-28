@@ -10,6 +10,7 @@ include("api:kafka")
 
 // Out/Secondary/Driven adapters
 include("infrastructure:orm")
+include("infrastructure:gps-tracker")
 include("infrastructure:persist:postgres")
 
 // Configuration of whole application

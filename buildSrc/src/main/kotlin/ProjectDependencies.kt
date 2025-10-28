@@ -112,6 +112,7 @@ object Libs {
         private const val version = "3.3.9"
         const val kafka = "org.springframework.kafka:spring-kafka:$version"
         const val jdbc = "org.springframework:spring-jdbc:$version"
+        const val context = "org.springframework:spring-context:6.1.2"
     }
     object SpringBoot {
         private const val version = "3.5.5"

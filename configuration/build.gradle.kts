@@ -16,6 +16,7 @@ dependencies {
 
     // infrastructure adapters
     api(project(":infrastructure:orm"))
+    api(project(":infrastructure:gps-tracker"))
     api(project(":infrastructure:persist:postgres"))
 
     // frameworks
